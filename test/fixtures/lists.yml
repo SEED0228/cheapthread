@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  view_counter: 
+  tytle: MyString
+  introduction: MyText
+  add_price_element: false
+  end_user_id: 
+
+two:
+  view_counter: 
+  tytle: MyString
+  introduction: MyText
+  add_price_element: false
+  end_user_id: 

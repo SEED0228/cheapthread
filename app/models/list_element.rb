@@ -1,0 +1,2 @@
+class ListElement < ApplicationRecord
+end
