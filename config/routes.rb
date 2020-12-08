@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   scope module: :public do
+    root 'home#home'
     devise_for :end_users, controllers: {
       sessions: 'public/end_users/sessions',
       registrations: 'public/end_users/registrations'

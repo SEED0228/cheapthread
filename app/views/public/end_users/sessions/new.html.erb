@@ -1,40 +1,66 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <h2>ログイン</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Cheapthread</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://kit.fontawesome.com/a3ed360f29.js" crossorigin="anonymous"></script>
+   
+  </head>
+
+  <body>
+
+    <%= render "layouts/public_header"%>
+
+    <div class="container">
       <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+          <h2>ログイン</h2>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "text-center") do |f| %>
+              
+              <%= render "public/end_users/shared/error_messages", resource: resource %>
 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <%= render "public/end_users/shared/error_messages", resource: resource %>
+              <div class="field">
+                <br />
+                <%= f.label :名前 %><br />
+                <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+              </div>
 
-          <div class="field">
-            <%= f.label :名前, class:"col-xs-offset-2 col-sm-offset-3" %><br />
-            <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3" %>
+              <div class="field">
+                <br />
+                <%= f.label :パスワード %><br />
+                <%= f.password_field :password, autocomplete: "current-password" %>
+              </div>
+
+              <% if devise_mapping.rememberable? %>
+                <br /> 
+                <div class="field">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :ログインを記憶する %>
+                </div>
+              <% end %>
+
+              <div class="actions row">
+                <%= f.submit "ログイン", class: "col-xs-6 col-xs-offset-3 btn btn-default"%>
+              </div>
+            
+            <% end %>
+          <div>
+            <%= render "public/end_users/shared/links" %>
           </div>
-
-          <div class="field">
-            <%= f.label :パスワード, class:"col-xs-offset-2 col-sm-offset-3" %><br />
-            <%= f.password_field :password, autocomplete: "current-password", class:"col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3" %>
-          </div>
-
-          <% if devise_mapping.rememberable? %>
-            <br /> <br />
-            <div class="field col-xs-offset-2 col-sm-offset-3">
-              <%= f.check_box :remember_me, class:"col-xs-offset-2 col-sm-offset-3" %>
-              <%= f.label :ログインを記憶する %>
-            </div>
-          <% end %>
-
-          <div class="actions">
-            <%= f.submit "ログイン", class:" btn btn-default col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2", style:"margin-top: 20px; margin-bottom: 20px;" %>
-          </div>
-        <% end %>
-
-      </div>
-      <div class="text-center">
-        <%= render "public/end_users/shared/links" %>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  </body>
+</html>
