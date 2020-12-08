@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_212207) do
+ActiveRecord::Schema.define(version: 2020_12_08_214637) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_212207) do
     t.string "list_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "calorie"
     t.index ["name"], name: "index_list_elements_on_name"
   end
 
@@ -56,6 +57,8 @@ ActiveRecord::Schema.define(version: 2020_12_08_212207) do
     t.integer "end_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "add_calorie", default: false
+    t.boolean "is_public", default: true
     t.index ["tytle"], name: "index_lists_on_tytle", unique: true
   end
 
