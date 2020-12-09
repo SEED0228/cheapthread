@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+        <%= render 'public/end_users/info', end_user:@end_user %>
+        <% if end_user_signed_in? %>
+            <%= render 'public/lists/form', list: @list_new %>
+        <% end %>
+
+        </div>
+        <div class="col-xs-12 col-md-9">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1><%= @list.title %></h1>
+                </div>
+                <div class="col-xs-6">
+                    <div class="row">
+                    <% if current_end_user == @end_user %>
+                        <%= link_to "編集・リスト追加", edit_list_path(@list), class: "col-xs-12 fas fa-wrench btn btn-success" %>
+                    <% end %>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="show_list_introduction"><%= @list.introduction %></p>
+            <%= render 'public/lists/element_table', list_elements: @list_elements, list: @list %>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   scope module: :public do
     root 'home#home'
+    resources :lists, only: [:index, :show, :create, :edit, :update, :destroy] 
     devise_for :end_users, controllers: {
       sessions: 'public/end_users/sessions',
       registrations: 'public/end_users/registrations'

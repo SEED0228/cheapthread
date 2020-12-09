@@ -1,0 +1,13 @@
+<h1>ユーザ情報</h1>
+<table class="table">
+		<tr><%= attachment_image_tag(end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+
+		<tr>
+			<th>ユーザ名</th>
+			<th><%= end_user.name %></th>
+		</tr>
+
+</table>
+<div class="row">
+    <%= link_to "ユーザページ", root_path, class: "btn btn-default col-xs-12"%>
+</div>

@@ -1,0 +1,35 @@
+<table class="table">
+<thead>
+<tr>
+    <td>リスト</td>
+    <td>閲覧数</td>
+    <td>値段</td>
+    <td>カロリー</td>
+    <td>詳細</td>
+</tr>
+</thead>
+<tbody>
+<% lists.each do |list|%>
+<tr>
+    <td><%= list.title %></td>
+    <td><%= list.view_counter %></td>
+    <td>
+    <% if list.add_price_element %>
+    <span class="far fa-circle"></span>
+    <% else %>
+    <span class="fa fa-times"></span>
+    <% end %>
+    </td>
+    <td>
+    <% if list.add_calorie %>
+    <span class="far fa-circle"></span>
+    <% else %>
+    <span class="fa fa-times"></span>
+    <% end %>
+    </td>
+    <td><%= link_to "詳細", list_path(list) %></td>
+</tr>
+
+<% end %>
+</tbody>
+</table>
