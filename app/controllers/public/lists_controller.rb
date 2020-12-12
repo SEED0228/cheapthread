@@ -7,6 +7,7 @@ class Public::ListsController < Public::Base
     @listnew = List.new
     @end_user = @list.end_user
     @list_elements = @list.list_elements
+    @list.view_counter += 1
   end
 
   def create
@@ -21,9 +22,16 @@ class Public::ListsController < Public::Base
   end
 
   def edit
+    @list = List.find(params[:id])
   end
 
   def update
+    @list = List.find(params[:id])
+    if @list.update(list_params)  
+      redirect_to list_path(@list)
+    else
+      render "edit"
+    end
   end
 
 private

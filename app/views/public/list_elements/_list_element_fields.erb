@@ -1,0 +1,11 @@
+<tr class="nested-fields">
+<td class="field"><%= f.text_field :name %></td>
+<% if list.add_price_element%>
+<td class="field"><%= f.text_field :price %></td>
+<% end %>
+<% if list.add_calorie %>
+<td class="field"><%= f.text_field :calorie %></td>
+<% end %>
+<td colspan="3"><%= f.text_area  :introduction %></td>
+<td><%= link_to_remove_association "削除", f%></td>
+</tr>

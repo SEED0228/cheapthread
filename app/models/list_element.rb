@@ -1,3 +1,3 @@
 class ListElement < ApplicationRecord
-    belongs_to :lists
+    belongs_to :list
 end
