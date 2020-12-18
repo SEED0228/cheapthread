@@ -9,5 +9,10 @@
 
 </table>
 <div class="row", style="margin: 30px 0;">
-    <%= link_to "ユーザページ", root_path, class: "btn btn-outline-primary col-xs-12"%>
+    <%= link_to "ユーザページ", end_user_path(end_user), class: "btn btn-outline-primary col-xs-12"%>
 </div>
+<% if end_user_signed_in? && end_user == current_end_user%>
+<div class="row", style="margin: 30px 0;">
+    <%= link_to "ユーザ編集", edit_end_user_path(end_user), class: "btn btn-outline-warning col-xs-12"%>
+</div>
+<% end %>
