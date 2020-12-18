@@ -16,6 +16,9 @@ class Public::EndUsersController < Public::Base
 
   def edit
     @end_user = EndUser.find(params[:id])
+    if @end_user != current_end_user
+      redirect_to end_user_path(current_end_user), notice: "他者のユーザを編集できません"
+    end
   end
 
   def update
