@@ -1,0 +1,4 @@
+$('.list_form').html("<%= j(render partial: 'public/lists/form',  locals: {list: @list} ) %>")
+.always(() => {
+    $("input").removeAttr("disabled");
+});

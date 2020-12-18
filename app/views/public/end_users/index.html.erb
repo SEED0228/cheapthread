@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+        <% if end_user_signed_in?%>
+            <%= render 'public/end_users/info', end_user: current_end_user %>
+            <%= render 'public/lists/form', list: @list%>
+        <% end %>
+
+        </div>
+        <div class="col-xs-12 col-md-9">
+            <h1>ユーザ一覧</h1>
+            <%= render 'public/end_users/table', lists: @lists%>
+        </div>
+    </div>
+</div>

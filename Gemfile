@@ -60,3 +60,7 @@ gem "refile-mini_magick"
 gem 'jquery-rails'
 gem 'devise-bootstrap-views'
 gem 'enum_help'
+gem 'jquery-ui-rails'
+gem 'jquery-turbolinks'
+#12/10
+gem 'cocoon'

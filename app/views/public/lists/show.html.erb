@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-3", style="margin-bottom: 50px;">
+        <%= render 'public/end_users/info', end_user:@end_user %>
+        <% if end_user_signed_in? %>
+            <%= render 'public/lists/form', list: @list_new %>
+        <% end %>
+
+        </div>
+        <div class="col-xs-12 col-md-9">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1><%= @list.title %></h1>
+                </div>
+                <div class="col-xs-6">
+                    <div class="row">
+                    <% if current_end_user == @end_user %>
+                        <%= link_to "編集", edit_list_path(@list), class: "col-xs-6 fas fa-wrench btn btn-success" %>
+                    <% end %>
+                    <% if current_end_user == @end_user %>
+                        <%= link_to "削除", list_path(@list), method: :delete, class: "col-xs-6 fas fa-trash btn btn-danger" %>
+                    <% end %>
+                    <% if current_end_user == @end_user %>
+                        <%= link_to "リスト追加", new_list_list_element_path(@list), class: "col-xs-6 fas fa-list btn btn-primary" %>
+                    <% end %>
+                    
+                    <%= link_to "〇連ガチャ", list_gacha_default_path(@list), class: "col-xs-6 fas fa-dharmachakra btn btn-outline-secondary" %>
+                    <% if price_permission(@list) %>
+                        <%= link_to "〇円ガチャ", list_gacha_price_path(@list), class: "col-xs-6 fas fa-dharmachakra btn btn-outline-primary" %>
+                    <% end %>
+                    <% if calorie_permission(@list) %>
+                        <%= link_to "〇kcalガチャ", list_gacha_calorie_path(@list), class: "col-xs-6 fas fa-dharmachakra btn btn-outline-warning" %>
+                    <% end %>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="show_list_introduction"><%= @list.introduction %></p>
+            <%= render 'public/lists/element_table', list_elements: @list_elements, list: @list %>
+        </div>
+    </div>
+</div>

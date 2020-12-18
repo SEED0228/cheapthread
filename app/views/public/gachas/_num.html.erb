@@ -1,0 +1,20 @@
+<div class="row">
+    <% calorie_text = ''%>
+    <% if calorie_permission(list)%>
+    <% total_calorie = 0%>
+    <% list_elements.each do |le|%>
+    <% total_calorie += le.calorie%>
+    <% end %>
+    <% calorie_text = '計'+total_calorie.to_s+'kcal,' %>
+    <% end %>
+    <% price_text = ''%>
+    <% if price_permission(list)%>
+    <% total_price = 0%>
+    <% list_elements.each do |le|%>
+    <% total_price += le.price%>
+    <% end %>
+    <% price_text = '計'+'¥'+total_price.to_s+',' %>
+    <% end %>
+    <h2 class="col-xs-6 col-xs-offset-6"><%=price_text%><%=calorie_text%><%=num%>回</h2>
+    <%= link_to "Tweetする", twitter_link, class:"fab fa-twitter btn btn-primary col-xs-4 col-xs-offset-8", style: "margin-top: 50px;"%>
+</div>

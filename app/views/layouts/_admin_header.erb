@@ -1,0 +1,21 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+            <%= link_to "", class:"navbar-brand", style: "color: yellow;" do%>
+                <span>〇円ガチャ(仮)(管理者)</span>
+            <% end %>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav navbar-right ml-auto">
+                    <li><%= link_to "ホーム", "/", class: "fas fa-home nav-link text-light"%></li>
+                    <li><%= link_to "リスト一覧", "/", class: "fas fa-list nav-link text-light"%></li>
+                    <% if admin_admin_signed_in? %>
+                    <li><%= link_to "ログアウト", destroy_admin_admin_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light"%></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

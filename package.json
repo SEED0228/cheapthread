@@ -2,13 +2,21 @@
   "name": "cheapthread",
   "private": true,
   "dependencies": {
+    "@nathanvda/cocoon": "^1.2.14",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.3.0",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0"
+    "rails-ujs": "^5.2.4-4",
+    "turbolinks": "^5.2.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
   },
   "version": "0.1.0"
 }

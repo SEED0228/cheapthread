@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <h1 id="num_title"><%=@list.title%>〇連ガチャ</h1>
+            <p><%=@list.introduction%></p>
+            <h1 style="margin: 50px 0;">ガチャ設定</h1>
+            <%= form_with url:list_gacha_default_create_path(@list), method: :post do |f|%>
+                <div class="field row">
+                    <%= f.text_field :time, class: 'gacha_field col-xs-6 list_title col-xs-offset-3' %>回
+                </div>
+
+                <div class="actions row", style="margin: 50px 0;">
+                    <%= f.submit "ガチャる", class: 'btn btn-primary col-xs-12'%>
+                </div>
+            <% end %>
+            <div class="hidden-xs">
+                <%= render 'public/end_users/info', end_user: @end_user %>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-8">
+            <h1 style="margin-bottom: 50px;">ガチャ結果</h1>
+            <div class = "gacha__table"></div>
+            <div class = "gacha__num", style="margin-top: 30px;"></div>
+        </div>
+    </div>
+</div>

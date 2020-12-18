@@ -1,0 +1,4 @@
+$('.gacha__table').html("<%= j(render partial: 'public/lists/element_table', locals: {list_elements: @list_elements, list: @list} )%>")
+$('.gacha__num').html("<%= j(render partial: 'public/gachas/price', locals: {total_price: @total_price, list_elements: @list_elements, list: @list, twitter_link: @tweet_link} )%>")
+$('#price_title').text("<%= @list.title+@max_price.to_s%>円ガチャ")
+$('.gacha_field').val('')
