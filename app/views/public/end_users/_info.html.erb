@@ -1,6 +1,6 @@
 <h1>ユーザ情報</h1>
 <table class="table">
-		<tr><%= attachment_image_tag(end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+		<tr><%= attachment_image_tag(end_user, :profile_image, size:'100x100', fallback: "no_image.jpg") %></tr>
 
 		<tr>
 			<th>ユーザ名</th>

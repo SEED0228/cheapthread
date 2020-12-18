@@ -1,4 +1,7 @@
 <h1>リスト作成</h1>
+<div class="error">
+    <%= render 'public/end_users/shared/error_messages', resource:list%>
+</div>
 <%= form_with model:list, local: true do |f| %>
 
     <div class="field row">

@@ -1,13 +1,18 @@
 class Public::ListsController < Public::Base
+  before_action :authenticate_end_user!, only: [:edit,:create,:update,:destroy]
   def index
   end
 
   def show
     @list = List.find(params[:id])
-    @listnew = List.new
+    if @list.is_public == false && current_end_user != @list.end_user
+       redirect_to root_path, notice: "このリストは非公開です"
+    end
+    @list_new = List.new
     @end_user = @list.end_user
     @list_elements = @list.list_elements
     @list.view_counter += 1
+    @list.save
   end
 
   def create

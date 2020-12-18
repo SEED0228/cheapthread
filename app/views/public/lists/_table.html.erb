@@ -2,9 +2,10 @@
 <thead>
 <tr>
     <td>リスト</td>
-    <td>閲覧数</td>
+    <td>ガチャ</td>
     <td>値段</td>
     <td>カロリー</td>
+    <td>閲覧数</td>
     <td>詳細</td>
 </tr>
 </thead>
@@ -12,22 +13,32 @@
 <% lists.each do |list|%>
 <tr>
     <td><%= list.title %></td>
+    <td>
+        <%= link_to list_gacha_default_path(list) do%>
+            <span class="far fa-circle"></span>
+        <% end %>
+    </td>
+    <td>
+    <% if list.add_price_element && price_permission(list)%>
+        <%= link_to list_gacha_price_path(list) do%>
+            <span class="far fa-circle"></span>
+        <% end %>
+    <% else %>
+    <span class="fa fa-times"></span>
+    <% end %>
+    </td>
+    <td>
+    <% if list.add_calorie && calorie_permission(list)%>
+        <%= link_to list_gacha_calorie_path(list) do%>
+            <span class="far fa-circle"></span>
+        <% end %>
+    <% else %>
+    <span class="fa fa-times"></span>
+    <% end %>
+    </td>
     <td><%= list.view_counter %></td>
-    <td>
-    <% if list.add_price_element %>
-    <span class="far fa-circle"></span>
-    <% else %>
-    <span class="fa fa-times"></span>
-    <% end %>
-    </td>
-    <td>
-    <% if list.add_calorie %>
-    <span class="far fa-circle"></span>
-    <% else %>
-    <span class="fa fa-times"></span>
-    <% end %>
-    </td>
     <td><%= link_to "詳細", list_path(list) %></td>
+    
 </tr>
 
 <% end %>
