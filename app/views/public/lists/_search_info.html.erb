@@ -1,0 +1,7 @@
+<div class="col-xs-6">
+    <p>検索ワード:<%= search_word == '' ? "なし" : search_word %></p>
+</div>
+<% sort_list = ["選択してください","新規順","古い順","閲覧数の多い順","閲覧数の少ない順"]%>
+<div class="col-xs-6">
+    <p><%=sort_list[sort_num]%></p>
+</div>

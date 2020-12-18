@@ -1,0 +1,2 @@
+$('.home_table').html("<%= j(render partial: 'public/lists/table', locals: {lists: @lists} )%>")
+$('.search_info').html("<%= j(render partial: 'public/lists/search_info', locals: {sort_num: @sort_num, search_word: @search_word} )%>")

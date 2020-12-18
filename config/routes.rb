@@ -6,15 +6,17 @@ Rails.application.routes.draw do
     }
     root 'home#home'
     resources :end_users, only: [:index, :show, :edit, :update]
-    resources :lists, only: [:index, :show, :create, :edit, :update, :destroy] do 
+    resources :lists, only: [:show, :create, :edit, :update, :destroy] do 
       resources :list_elements, only: [:new, :create, :update, :destroy]
-      get 'gachas/default', as: :gacha_default
-      get 'gachas/price', as: :gacha_price
-      get 'gachas/calorie', as: :gacha_calorie
-      post 'gachas/default', to: 'gachas#default_create', as: :gacha_default_create
-      post 'gachas/price', to: 'gachas#price_create', as: :gacha_price_create
-      post 'gachas/calorie', to: 'gachas#calorie_create', as: :gacha_calorie_create
+      get 'gacha/default', to: 'gachas#default', as: :gacha_default
+      get 'gacha/price', to: 'gachas#price', as: :gacha_price
+      get 'gacha/calorie', to: 'gachas#calorie', as: :gacha_calorie
+      post 'gacha/default', to: 'gachas#default_create', as: :gacha_default_create
+      post 'gacha/price', to: 'gachas#price_create', as: :gacha_price_create
+      post 'gacha/calorie', to: 'gachas#calorie_create', as: :gacha_calorie_create
     end
+    post 'home/sort', to: 'home#sort', as: :home_sort
+    post 'lists/search', to: 'lists#search', as: :search_list
   end
 
   namespace :admin do

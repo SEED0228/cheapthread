@@ -1,7 +1,5 @@
 class Public::ListsController < Public::Base
   before_action :authenticate_end_user!, only: [:edit,:create,:update,:destroy]
-  def index
-  end
 
   def show
     @list = List.find(params[:id])
@@ -39,6 +37,31 @@ class Public::ListsController < Public::Base
     end
   end
 
+  def search
+    @sort_num = params[:sort_num].to_i
+    @search_word = params[:search_word]
+    if @search_word.nil?
+      @lists = List.where(is_public: true)
+    else
+      @lists = List.where(is_public: true).where("title like ?", "%"+@search_word+"%")
+    end
+    case @sort_num
+    when 1 then
+      @lists = @lists.order(id: "DESC")
+    when 2 then
+      @lists = @lists
+    when 3 then
+      @lists = @lists.order(view_counter: "DESC")
+    when 4 then
+      @lists = @lists.order(view_counter: "ASC")
+    end
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to root_path, notice: "正常に削除されました"
+  end
 private
   def list_params
     params.require(:list).permit(:title, :introduction, :add_calorie, :add_price_element, :is_public)

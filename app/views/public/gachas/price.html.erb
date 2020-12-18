@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-md-3">
+        <div class="col-xs-12 col-md-4">
             <h1 id="price_title"><%=@list.title%>〇円ガチャ</h1>
             
             <p><%=@list.introduction%></p>
@@ -18,7 +18,7 @@
                 <%= render 'public/end_users/info', end_user: @end_user %>
             </div>
         </div>
-        <div class="col-xs-12 col-md-9">
+        <div class="col-xs-12 col-md-8">
             <h1 style="margin-bottom: 50px;">ガチャ結果</h1>
             <div class = "gacha__table"></div>
             <div class = "gacha__num", style="margin-top: 30px;"></div>

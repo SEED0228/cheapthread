@@ -1,0 +1,15 @@
+<h1 style="margin-top: 30px;">リスト検索</h1>
+<%= form_with url:search_list_path do |f| %>
+
+    <div class="field row", style="margin:30px 0;">
+        <%= f.text_field :search_word, class: 'col-xs-12 search_word' %>
+    </div>
+
+    <div class="field row", style="margin:30px 0;">
+        <%= f.select :sort_num, {'新規順': 1, '古い順': 2, '閲覧数の多い順':3,'閲覧数の少ない順':4}, { include_blank: '選択してください'}, { class: 'form-control col-xs-12 col-xs-offset-0' , required: true }%>
+    </div>
+
+    <div class="actions row", style="margin:30px 0;">
+        <%= f.submit "検索", class: 'btn btn-outline-danger col-xs-12'%>
+    </div>
+<% end %>

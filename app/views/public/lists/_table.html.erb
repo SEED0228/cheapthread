@@ -1,10 +1,12 @@
 <table class="table">
 <thead>
 <tr>
+    <td>作成者</td>
     <td>リスト</td>
     <td>ガチャ</td>
     <td>値段</td>
     <td>カロリー</td>
+    <td>作成日</td>
     <td>閲覧数</td>
     <td>詳細</td>
 </tr>
@@ -12,6 +14,12 @@
 <tbody>
 <% lists.each do |list|%>
 <tr>
+    <td>
+        <%= link_to end_user_path(list.end_user) do%>
+            <%= attachment_image_tag(list.end_user, :profile_image, size:'20x20', fallback: "no_image.jpg") %>
+            <%= list.end_user.name %>
+        <% end %>
+    </td>
     <td><%= list.title %></td>
     <td>
         <%= link_to list_gacha_default_path(list) do%>
@@ -36,6 +44,7 @@
     <span class="fa fa-times"></span>
     <% end %>
     </td>
+    <td><%= list.created_at.to_s(:datetime_jp) %></td>
     <td><%= list.view_counter %></td>
     <td><%= link_to "詳細", list_path(list) %></td>
     

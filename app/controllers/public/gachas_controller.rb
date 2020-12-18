@@ -2,11 +2,18 @@ class Public::GachasController < Public::Base
   def default
     @list = List.find(params[:list_id])
     @end_user = @list.end_user
+    if @list.is_public == false && @list.end_user != current_end_user
+      redirect_to root_path, notice: 'このリストは非公開です'
+    end
   end
 
   def price
     @list = List.find(params[:list_id])
     @end_user = @list.end_user
+    if @list.is_public == false && @list.end_user != current_end_user
+      redirect_to root_path, notice: 'このリストは非公開です'
+      return 
+    end
     if price_permission(@list) == false
       redirect_to root_path, notice: 'このリストは〇円ガチャできません'
     end
@@ -16,6 +23,10 @@ class Public::GachasController < Public::Base
   def calorie
     @list = List.find(params[:list_id])
     @end_user = @list.end_user
+    if @list.is_public == false && @list.end_user != current_end_user
+      redirect_to root_path, notice: 'このリストは非公開です'
+      return
+    end
     if calorie_permission(@list) == false
       redirect_to root_path, notice: 'このリストは〇kcalガチャできません'
     end
