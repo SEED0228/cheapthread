@@ -4,6 +4,14 @@
             <h1 id="price_title"><%=@list.title%>〇円ガチャ</h1>
             
             <p><%=@list.introduction%></p>
+            <div class="row", style="margin: 30px 0;">
+                <%= link_to "戻る", list_path(@list), class: "btn btn-outline-primary col-xs-12 col-md-4"%>
+                <%= link_to "〇連ガチャへ", list_gacha_default_path(@list), class: "btn btn-outline-primary col-xs-12 col-md-4"%>
+
+                <% if calorie_permission(@list) && @list.add_calorie %>
+                    <%= link_to "〇kcalガチャへ", list_gacha_calorie_path(@list), class: "btn btn-outline-primary col-xs-12 col-md-4"%>
+                <% end %>
+            </div>
             <h1 style="margin: 50px 0;">ガチャ設定</h1>
             <%= form_with url:list_gacha_price_create_path(@list), method: :post do |f|%>
                 <div class="field row">
