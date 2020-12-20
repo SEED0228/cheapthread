@@ -25,7 +25,7 @@
                         <%= link_to "リスト追加", new_list_list_element_path(@list), class: "col-md-6 col-xs-12 fas fa-list btn btn-primary",style: "font-size: 20px;" %>
                     <% end %>
                     <% if @list.list_elements.count != 0 %>
-                        <%= link_to "〇連ガチャ", list_gacha_default_path(@list), class: "col-md-6 col-xs-12fas fa-dharmachakra btn btn-outline-secondary",style: "font-size: 20px;" %>
+                        <%= link_to "〇連ガチャ", list_gacha_default_path(@list), class: "col-md-6 col-xs-12 fas fa-dharmachakra btn btn-outline-secondary",style: "font-size: 20px;" %>
                         <% if price_permission(@list) && @list.add_price_element %>
                             <%= link_to "〇円ガチャ", list_gacha_price_path(@list), class: "col-md-6 col-xs-12 fas fa-dharmachakra btn btn-outline-primary",style: "font-size: 20px;" %>
                         <% end %>

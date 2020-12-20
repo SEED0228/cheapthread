@@ -48,6 +48,7 @@ class Public::GachasController < Public::Base
       @list_elements.push(list_element)
       @tweet_link += "%0A"+list_element.name
     }
+    @tweet_link += "%0Alink:"+"https://cheapthread.herokuapp.com/lists/"+@list.id.to_s
     URI.encode @tweet_link
 
   end
@@ -73,6 +74,7 @@ class Public::GachasController < Public::Base
       @total_price += list_element.price
     end
     @tweet_link += "%0A"+"計￥"+@total_price.to_s
+    @tweet_link += "%0Alink:"+"https://cheapthread.herokuapp.com/lists/"+@list.id.to_s
     URI.encode @tweet_link
 
   end
@@ -98,6 +100,8 @@ class Public::GachasController < Public::Base
       @total_calorie += list_element.calorie
     end
     @tweet_link += "%0A"+"計"+@total_calorie.to_s+"kcal"
+    @tweet_link += "%0A"+"https://cheapthread.herokuapp.com/lists/"+@list.id.to_s
+
     URI.encode @tweet_link
   end
   private
