@@ -1,0 +1,34 @@
+current directory: /home/seed/rails/cheapthread/gems/bootsnap-1.9.3/ext/bootsnap
+/home/seed/.rbenv/versions/2.6.3/bin/ruby -I /home/seed/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20211126-100700-4ovnoc.rb extconf.rb
+creating Makefile
+
+current directory: /home/seed/rails/cheapthread/gems/bootsnap-1.9.3/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /home/seed/rails/cheapthread/gems/bootsnap-1.9.3/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+bootsnap.c: 関数 ‘bs_rb_fetch’ 内:
+bootsnap.c:355:3: 警告: ISO C90 は宣言とコードの混合を禁止しています [-Wdeclaration-after-statement]
+  355 |   char * cachedir = RSTRING_PTR(cachedir_v);
+      |   ^~~~
+bootsnap.c: 関数 ‘bs_rb_precompile’ 内:
+bootsnap.c:382:3: 警告: ISO C90 は宣言とコードの混合を禁止しています [-Wdeclaration-after-statement]
+  382 |   char * cachedir = RSTRING_PTR(cachedir_v);
+      |   ^~~~
+bootsnap.c: 関数 ‘bs_rb_fetch’ 内:
+bootsnap.c:742:13: 警告: ‘output_data’ はこの関数内初期化されずに使用されるかもしれません [-Wmaybe-uninitialized]
+  742 |     else if (!NIL_P(output_data)) goto succeed; /* fast-path, goal */
+      |             ^
+bootsnap.c:705:9: 備考: ‘output_data’ はここで定義されています
+  705 |   VALUE output_data;  /* return data, e.g. ruby hash or loaded iseq */
+      |         ^~~~~~~~~~~
+bootsnap.c: トップレベル:
+cc1: 備考: unrecognized command-line option ‘-Wno-self-assign’ may have been intended to silence earlier diagnostics
+cc1: 備考: unrecognized command-line option ‘-Wno-parentheses-equality’ may have been intended to silence earlier diagnostics
+cc1: 備考: unrecognized command-line option ‘-Wno-constant-logical-operand’ may have been intended to silence earlier diagnostics
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/seed/rails/cheapthread/gems/bootsnap-1.9.3/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20211126-100700-1h2y2f1/bootsnap
