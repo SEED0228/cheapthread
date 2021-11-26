@@ -15,3 +15,23 @@
 ## リンク
 
 [ガチャアプリ](https://cheapthread.herokuapp.com/)
+
+## 環境構築方法
+
+- ビルドを行う
+
+```
+docker-compose build
+```
+
+- DBの作成を行う
+
+```
+docker-compose run web rake db:create 
+```
+
+- コンテナを立ち上げる
+
+```
+docker-compose up
+```
