@@ -1,23 +1,23 @@
-class Public::HomeController < Public::Base
-  def home
-    @lists = List.where(is_public: true).order(id: "DESC")
-    @list = List.new
-  end
+# frozen_string_literal: true
 
-  def sort
-    sort_num = params[:sort_num].to_i
-    
-    case sort_num
-    when 1 then
-      @lists = List.where(is_public: true).order(id: "DESC")
-    when 2 then
-      @lists = List.where(is_public: true)
-    when 3 then
-      @lists = List.where(is_public: true).order(view_counter: "DESC")
-    when 4 then
-      @lists = List.where(is_public: true).order(view_counter: "ASC")
+module Public
+  class HomeController < Public::Base
+    def home
+      @lists = List.where(is_public: true).order(id: 'DESC')
+      @list = List.new
+    end
+
+    def sort
+      case params[:sort_num].to_i
+      when 1
+        @lists = List.where(is_public: true).order(id: 'DESC')
+      when 2
+        @lists = List.where(is_public: true).order(id: 'ASC')
+      when 3
+        @lists = List.where(is_public: true).order(view_counter: 'DESC')
+      when 4
+        @lists = List.where(is_public: true).order(view_counter: 'ASC')
+      end
     end
   end
-
-
 end

@@ -1,38 +1,40 @@
-class Public::EndUsersController < Public::Base
-  def index
-    @end_users = EndUser.all
-    @list = List.new
-  end
+# frozen_string_literal: true
 
-  def show
-    @end_user = EndUser.find(params[:id])
-    @list = List.new
-    if current_end_user == @end_user
-      @lists = @end_user.lists
-    else
-      @lists = @end_user.lists.where(is_public: true)
+module Public
+  class EndUsersController < Public::Base
+    def index
+      @end_users = EndUser.all
+      @list = List.new
     end
-  end
 
-  def edit
-    @end_user = EndUser.find(params[:id])
-    if @end_user != current_end_user
-      redirect_to end_user_path(current_end_user), notice: "他者のユーザを編集できません"
+    def show
+      @end_user = EndUser.find(params[:id])
+      @list = List.new
+      @lists = if current_end_user == @end_user
+                 @end_user.lists
+               else
+                 @end_user.lists.where(is_public: true)
+               end
     end
-  end
 
-  def update
-    @end_user = EndUser.find(params[:id])
-    if @end_user.update(end_user_params)
-      redirect_to end_user_path(params[:id]), notice: '正常に編集できました'
-    else
-      render 'edit'
+    def edit
+      @end_user = EndUser.find(params[:id])
+      redirect_to end_user_path(current_end_user), notice: '他者のユーザを編集できません' if @end_user != current_end_user
     end
-  end
 
-  private
+    def update
+      @end_user = EndUser.find(params[:id])
+      if @end_user.update(end_user_params)
+        redirect_to end_user_path(params[:id]), notice: '正常に編集できました'
+      else
+        render 'edit'
+      end
+    end
 
-  def end_user_params
-    params.require(:end_user).permit(:name, :email, :profile_image)
+    private
+
+    def end_user_params
+      params.require(:end_user).permit(:name, :email, :profile_image)
+    end
   end
 end
