@@ -1,0 +1,31 @@
+require:
+  - rubocop-rails
+
+inherit_from:
+  - ".rubocop_todo.yml"
+
+inherit_gem:
+  onkcop:
+    - "config/rails.yml"
+    - "config/rspec.yml"
+
+AllCops:
+  TargetRubyVersion: 2.6.3　
+  TargetRailsVersion: 6.0.3.4　
+  Exclude:
+    - "vendor/**/*" # rubocop config/default.yml
+    - "db/schema*.rb"
+    - "node_modules/**/*"
+    - "db/migrate/**/*" 
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - ".git/**/*"
+    - "bin/*"
+    - "config/**/*"
+    - "gems/*"
+    - "app/controllers/admin/*"
+    - "app/helpers/admin/*"
+    - "app/controllers/admin/admins/*"
+
+Documentation:
+  Enabled: false
