@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :lists, only: [:index, :show] do
         resources :list_elements, only: [:index], path: :elements
+        get 'gacha/default', to: 'gachas#default'
+        get 'gacha/price', to: 'gachas#price'
+        get 'gacha/calorie', to: 'gachas#calorie'
       end
     end
   end
