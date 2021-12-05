@@ -24,7 +24,7 @@ module Public
     private
 
     def list_params
-      params.require(:list).permit(:title, :introduction, :add_calorie, :add_price_element, :is_public,
+      params.require(:list).permit(:title, :introduction, :contains_calorie, :contains_price, :is_public,
                                    list_elements_attributes: %i[_destroy id name price introduction calorie])
     end
   end

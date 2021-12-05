@@ -47,7 +47,7 @@ class List < ApplicationRecord
   end
 
   def ready_to_turn_price_gacha?
-    return false if list_elements.empty? || !add_price_element
+    return false if list_elements.empty? || !contains_price
 
     list_elements.each do |list_element|
       return false if list_element.price.nil? || list_element.price.zero?
@@ -56,7 +56,7 @@ class List < ApplicationRecord
   end
 
   def ready_to_turn_calorie_gacha?
-    return false if list_elements.empty? || add_calorie
+    return false if list_elements.empty? || contains_calorie
 
     list_elements.each do |list_element|
       return false if list_element.calorie.nil? || list_element.calorie.zero?

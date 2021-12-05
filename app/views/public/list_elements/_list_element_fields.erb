@@ -1,9 +1,9 @@
 <tr class="nested-fields">
 <td class="field"><%= f.text_field :name %></td>
-<% if list.add_price_element%>
+<% if list.contains_price%>
 <td class="field"><%= f.text_field :price %></td>
 <% end %>
-<% if list.add_calorie %>
+<% if list.contains_calorie %>
 <td class="field"><%= f.text_field :calorie %></td>
 <% end %>
 <td colspan="3"><%= f.text_area  :introduction %></td>

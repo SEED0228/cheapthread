@@ -5,10 +5,10 @@
             <p><%=@list.introduction%></p>
             <div class="row", style="margin: 30px 0;">
                 <%= link_to "戻る", list_path(@list), class: "btn btn-outline-primary col-xs-12 col-md-4"%>
-                <% if price_permission(@list) && @list.add_price_element %>
+                <% if price_permission(@list) && @list.contains_price %>
                     <%= link_to "〇円ガチャへ", list_gacha_price_path(@list), class: "btn btn-outline-primary col-xs-12 col-md-4"%>
                 <% end %>
-                <% if calorie_permission(@list) && @list.add_calorie %>
+                <% if calorie_permission(@list) && @list.contains_calorie %>
                     <%= link_to "〇kcalガチャへ", list_gacha_calorie_path(@list), class: "btn btn-outline-primary col-xs-12 col-md-4"%>
                 <% end %>
             </div>

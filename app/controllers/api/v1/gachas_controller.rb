@@ -29,7 +29,7 @@ module Api
       end
 
       def calorie
-        if @list.present? && @list.add_calorie
+        if @list.present? && @list.contains_calorie
           if (calorie = params[:calorie].to_i).positive? && @list.ready_to_turn_calorie_gacha?
             render json: @list.turn_calorie_gacha(calorie)
           else
