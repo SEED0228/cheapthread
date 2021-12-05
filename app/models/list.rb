@@ -5,8 +5,6 @@ class List < ApplicationRecord
   has_many :list_elements, dependent: :destroy
   accepts_nested_attributes_for :list_elements, allow_destroy: true
   validates :title, presence: true
-  scope :is_public, -> { where(is_public: true) }
-  scope :contains_elements, -> { joins(:list_elements).where('list_elements.id IS NOT NULL') }
 
   def turn_default_gacha(num)
     elements = []
@@ -40,27 +38,5 @@ class List < ApplicationRecord
       total_calorie += element.calorie
     end
     [total_calorie, elements]
-  end
-
-  def ready_to_turn_default_gacha?
-    list_elements.count.positive?
-  end
-
-  def ready_to_turn_price_gacha?
-    return false if list_elements.empty? || !contains_price
-
-    list_elements.each do |list_element|
-      return false if list_element.price.nil? || list_element.price.zero?
-    end
-    true
-  end
-
-  def ready_to_turn_calorie_gacha?
-    return false if list_elements.empty? || contains_calorie
-
-    list_elements.each do |list_element|
-      return false if list_element.calorie.nil? || list_element.calorie.zero?
-    end
-    true
   end
 end

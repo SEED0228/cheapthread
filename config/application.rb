@@ -17,8 +17,5 @@ module Cheapthread
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.time_zone = 'Tokyo'
-    config.generators do |g|
-      g.test_framework false
-    end
   end
 end

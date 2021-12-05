@@ -29,14 +29,4 @@ Rails.application.routes.draw do
     get '/' => 'home#top'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  namespace :api do
-    namespace :v1 do
-      resources :lists, only: [:index, :show] do
-        resources :list_elements, only: [:index], path: :elements
-        get 'gacha/default', to: 'gachas#default'
-        get 'gacha/price', to: 'gachas#price'
-        get 'gacha/calorie', to: 'gachas#calorie'
-      end
-    end
-  end
 end
