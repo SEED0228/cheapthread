@@ -5,6 +5,7 @@ class List < ApplicationRecord
   has_many :list_elements, dependent: :destroy
   accepts_nested_attributes_for :list_elements, allow_destroy: true
   validates :title, presence: true
+  scope :is_public, -> { where(is_public: true) }
 
   def turn_default_gacha(num)
     elements = []
