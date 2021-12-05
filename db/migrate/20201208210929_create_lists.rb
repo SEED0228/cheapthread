@@ -4,7 +4,7 @@ class CreateLists < ActiveRecord::Migration[6.0]
       t.integer :view_counter, null: false
       t.string :tytle, null: false
       t.text :introduction
-      t.boolean :contains_price, null: false, default: true
+      t.boolean :add_price_element, null: false, default: true 
       t.integer :end_user_id, null: false
 
       t.timestamps
