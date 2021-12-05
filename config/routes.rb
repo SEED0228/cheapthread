@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     root 'home#home'
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :lists, only: [:show, :create, :edit, :update, :destroy] do 
-      resources :list_elements, only: [:new, :create, :update, :destroy]
+      resources :list_elements, only: [:new, :create, :update, :destroy] do
+        collection { post :import }
+      end
       get 'gacha/default', to: 'gachas#default', as: :gacha_default
       get 'gacha/price', to: 'gachas#price', as: :gacha_price
       get 'gacha/calorie', to: 'gachas#calorie', as: :gacha_calorie
