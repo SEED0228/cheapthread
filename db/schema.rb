@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_05_114919) do
+ActiveRecord::Schema.define(version: 2021_12_05_140504) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_12_05_114919) do
     t.string "list_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "calorie"
+    t.integer "calorie", default: 0
     t.index ["name"], name: "index_list_elements_on_name"
   end
 
