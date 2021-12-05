@@ -3,9 +3,9 @@
 <tr>
     <td>作成者</td>
     <td>リスト</td>
-    <td>ガチャ</td>
-    <td>値段</td>
-    <td>カロリー</td>
+    <td>通常ガチャ</td>
+    <td>値段ガチャ</td>
+    <td>カロリーガチャ</td>
     <td>作成日</td>
     <td>閲覧数</td>
     <td>詳細</td>
@@ -22,27 +22,31 @@
     </td>
     <td><%= list.title %></td>
     <td>
+      <% if list.ready_to_turn_default_gacha? %>
         <%= link_to list_gacha_default_path(list) do%>
-            <span class="far fa-circle"></span>
+          <span class="far fa-circle"></span>
         <% end %>
+      <% else %>
+        <span class="fa fa-times"></span>
+      <% end %>
     </td>
     <td>
-    <% if list.add_price_element && price_permission(list)%>
-        <%= link_to list_gacha_price_path(list) do%>
-            <span class="far fa-circle"></span>
-        <% end %>
-    <% else %>
-    <span class="fa fa-times"></span>
-    <% end %>
+      <% if list.ready_to_turn_price_gacha? %>
+          <%= link_to list_gacha_price_path(list) do%>
+              <span class="far fa-circle"></span>
+          <% end %>
+      <% else %>
+        <span class="fa fa-times"></span>
+      <% end %>
     </td>
     <td>
-    <% if list.add_calorie && calorie_permission(list)%>
-        <%= link_to list_gacha_calorie_path(list) do%>
-            <span class="far fa-circle"></span>
-        <% end %>
-    <% else %>
-    <span class="fa fa-times"></span>
-    <% end %>
+      <% if list.ready_to_turn_calorie_gacha? %>
+          <%= link_to list_gacha_calorie_path(list) do%>
+              <span class="far fa-circle"></span>
+          <% end %>
+      <% else %>
+        <span class="fa fa-times"></span>
+      <% end %>
     </td>
     <td><%= list.created_at.to_s(:datetime_jp) %></td>
     <td><%= list.view_counter %></td>

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     root 'home#home'
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :lists, only: [:show, :create, :edit, :update, :destroy] do 
-      resources :list_elements, only: [:new, :create, :update, :destroy]
+      resources :list_elements, only: [:new, :create, :update, :destroy] do
+        collection { post :import }
+      end
       get 'gacha/default', to: 'gachas#default', as: :gacha_default
       get 'gacha/price', to: 'gachas#price', as: :gacha_price
       get 'gacha/calorie', to: 'gachas#calorie', as: :gacha_calorie
@@ -27,4 +29,14 @@ Rails.application.routes.draw do
     get '/' => 'home#top'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v1 do
+      resources :lists, only: [:index, :show] do
+        resources :list_elements, only: [:index], path: :elements
+        get 'gacha/default', to: 'gachas#default'
+        get 'gacha/price', to: 'gachas#price'
+        get 'gacha/calorie', to: 'gachas#calorie'
+      end
+    end
+  end
 end
