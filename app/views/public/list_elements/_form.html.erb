@@ -1,51 +1,52 @@
+<h1>リスト作成</h1>
 <div class="error">
-  <%= render 'public/end_users/shared/error_messages', resource:list%>
+    <%= render 'public/end_users/shared/error_messages', resource:list%>
 </div>
 <%= form_with model:list, url: list_list_elements_path, method: :post, local: true do |f| %>
 
     <div class="field row">
-      <%= f.label "タイトル" %>
-      <%= f.text_field :title, class: 'col-xs-12 list_title' %>
+        <%= f.label "タイトル" %>
+        <%= f.text_field :title, class: 'col-xs-12 list_title' %>
     </div>
 
     <div class="field row">
-      <%= f.label "詳細" %>
-      <%= f.text_area :introduction, class: 'col-xs-12 list_title' %>
+        <%= f.label "詳細" %>
+        <%= f.text_area :introduction, class: 'col-xs-12 list_title' %>
     </div>
 
-  <div class="field row">
+    <div class="field row">
     <table class="table" >
-      <thead>
-        <tr>
-          <td>名前</td>
-          <% if list.contains_price%>
-            <td>値段</td>
-          <% end %>
-          <% if list.contains_calorie %>
-            <td>カロリー</td>
-          <% end %>
-          <td colspan="3">詳細</td>
-        </tr>
-      </thead>
-      <tbody id="list_elements">
-      <%= f.fields_for :list_elements do |t| %>
-        <%= render "list_element_fields", f: t, list: list %>
-      <% end %>
-      </tbody>
+    <thrad>
+    <tr>
+    <td>名前</td>
+    <% if list.add_price_element%>
+    <td>値段</td>
+    <% end %>
+    <% if list.add_calorie %>
+    <td>カロリー</td>
+    <% end %>
+    <td colspan="3">詳細</td>
+    </tr>
+    </thead>
+    <tbody id="list_elements">
+        <%= f.fields_for :list_elements do |t| %>
+            <%= render "list_element_fields", f: t, list: list %>
+        <% end %>
+    </tbody>
     </table>
-    <div class="links col-12 row">
-      <%= link_to_add_association "要素を追加", f, :list_elements, render_options: {locals: {list: list}},
-                                  class: 'col-xs-6 col-xs-offset-3 btn btn-success',
-                                  data: {
-                                    association_insertion_node: '#list_elements',
-                                    association_insertion_method: 'append' }
-      %>
+    <div class="links col-xs-12 row">
+        <%= link_to_add_association "要素を追加", f, :list_elements, render_options: {locals: {list: list}}, 
+        class: 'col-xs-6 col-xs-offset-3 btn btn-success',
+        data: {
+        association_insertion_node: '#list_elements',
+        association_insertion_method: 'append' }
+         %>
     </div>
-  </div>
+    </div>
 
 
-  <div class="actions row", style="margin-top: 50px;">
-    <%= f.submit "リスト要素を更新", class: 'btn btn-primary col-xs-12'%>
-  </div>
+    <div class="actions row", style="margin-top: 50px;">
+        <%= f.submit "リスト要素を更新", class: 'btn btn-primary col-xs-12'%>
+    </div>
 <% end %>
 

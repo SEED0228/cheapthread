@@ -2,10 +2,10 @@
 <thead>
 <tr>
     <td>要素名</td>
-    <% if list.contains_price %>
+    <% if list.add_price_element %>
     <td>値段(円)</td>
     <% end %>
-    <% if list.contains_calorie%>
+    <% if list.add_calorie%>
     <td>カロリー(kcal)</td>
     <% end %>
     <td>詳細</td>
@@ -16,11 +16,11 @@
 <tr>
     <td><%= list_element.name %></td>
     
-    <% if list.contains_price %>
+    <% if list.add_price_element %>
         <td><%= list_element.price%></td>
     <% end %>
     
-    <% if list.contains_calorie %>
+    <% if list.add_calorie %>
     <td><%= list_element.calorie %></td>
     <% end %>
     <td><%= list_element.introduction.truncate(20)%>

@@ -15,7 +15,7 @@ module Public
         redirect_to root_path, notice: 'このリストは非公開です'
         return
       end
-      redirect_to root_path, notice: 'このリストは〇円ガチャできません' if @list.ready_to_turn_price_gacha?
+      redirect_to root_path, notice: 'このリストは〇円ガチャできません' if price_permission(@list) == false
     end
 
     def calorie
@@ -25,7 +25,7 @@ module Public
         redirect_to root_path, notice: 'このリストは非公開です'
         return
       end
-      redirect_to root_path, notice: 'このリストは〇kcalガチャできません' if @list.ready_to_turn_calorie_gacha?
+      redirect_to root_path, notice: 'このリストは〇kcalガチャできません' if calorie_permission(@list) == false
     end
 
     def default_create
@@ -57,6 +57,20 @@ module Public
     end
 
     private
+
+    def price_permission(list)
+      list.list_elements.each do |list_element|
+        return false if list_element.price.nil? || list_element.price.zero?
+      end
+      true
+    end
+
+    def calorie_permission(list)
+      list.list_elements.each do |list_element|
+        return false if list_element.calorie.nil? || list_element.calorie.zero?
+      end
+      true
+    end
 
     def gacha_params
       params.permit(:price, :calorie, :time)

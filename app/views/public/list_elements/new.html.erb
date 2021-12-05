@@ -1,23 +1,10 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2 list_form">
-      <% if end_user_signed_in? %>
-        <div class="row">
-          <div class="col-md-8 col-12">
-            <h1>ガチャ要素追加</h1>
-          </div>
-          <div class="col-md-4 col-12">
-            <%= form_with url: import_list_list_elements_path(@list.id), method: :post, multipart: true do |f| %>
-              <%= file_field_tag :file %>
-              <%= submit_tag "インポート" %>
-            <% end %>
-          </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3 list_form">
+        <% if end_user_signed_in? %>
+            <%= render 'public/list_elements/form', list: @list %>
+        <% end %>
         </div>
-        <div class="row col-12 new_element_container">
-          <%= render 'public/list_elements/form', list: @list %>
-        </div>
-      <% end %>
     </div>
-  </div>
 </div>
 

@@ -8,7 +8,7 @@
                 <%= link_to "戻る", list_path(@list), class: "btn btn-outline-primary col-xs-12 col-md-4"%>
                 <%= link_to "〇連ガチャへ", list_gacha_default_path(@list), class: "btn btn-outline-primary col-xs-12 col-md-4"%>
 
-                <% if calorie_permission(@list) && @list.contains_calorie %>
+                <% if calorie_permission(@list) && @list.add_calorie %>
                     <%= link_to "〇kcalガチャへ", list_gacha_calorie_path(@list), class: "btn btn-outline-primary col-xs-12 col-md-4"%>
                 <% end %>
             </div>

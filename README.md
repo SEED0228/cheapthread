@@ -27,7 +27,7 @@ docker-compose build
 - DBの作成を行う
 
 ```
-docker-compose run web bundle exec rails db:create 
+docker-compose run web rake db:create 
 ```
 
 - コンテナを立ち上げる

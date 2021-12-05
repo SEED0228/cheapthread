@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_05_114919) do
+ActiveRecord::Schema.define(version: 2020_12_17_073521) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,11 +53,11 @@ ActiveRecord::Schema.define(version: 2021_12_05_114919) do
     t.integer "view_counter", default: 0, null: false
     t.string "title", null: false
     t.text "introduction"
-    t.boolean "contains_price", default: true, null: false
+    t.boolean "add_price_element", default: true, null: false
     t.integer "end_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "contains_calorie", default: false
+    t.boolean "add_calorie", default: false
     t.boolean "is_public", default: true
     t.index ["title"], name: "index_lists_on_title", unique: true
   end

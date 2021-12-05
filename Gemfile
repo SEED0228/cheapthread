@@ -75,8 +75,6 @@ gem 'rubocop-discourse', require: false
 gem 'rubocop-performance', require: false
 gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
-# 2021/12/5
-gem 'roo'
 
 group :production do
   gem 'pg'
