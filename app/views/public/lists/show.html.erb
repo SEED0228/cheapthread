@@ -24,12 +24,12 @@
                     <% if current_end_user == @end_user %>
                         <%= link_to "リスト追加", new_list_list_element_path(@list), class: "col-md-6 col-xs-12 fas fa-list btn btn-primary",style: "font-size: 20px;" %>
                     <% end %>
-                    <% if @list.list_elements.count != 0 %>
+                    <% if @list.list_elements.exists? %>
                         <%= link_to "〇連ガチャ", list_gacha_default_path(@list), class: "col-md-6 col-xs-12 fas fa-dharmachakra btn btn-outline-secondary",style: "font-size: 20px;" %>
-                        <% if price_permission(@list) && @list.contains_price %>
+                        <% if @list.ready_to_turn_price_gacha? %>
                             <%= link_to "〇円ガチャ", list_gacha_price_path(@list), class: "col-md-6 col-xs-12 fas fa-dharmachakra btn btn-outline-primary",style: "font-size: 20px;" %>
                         <% end %>
-                        <% if calorie_permission(@list) &&  @list.contains_calorie %>
+                        <% if @list.ready_to_turn_calorie_gacha? %>
                             <%= link_to "〇kcalガチャ", list_gacha_calorie_path(@list), class: "col-md-6 col-xs-12 fas fa-dharmachakra btn btn-outline-warning",style: "font-size: 20px;" %>
                         <% end %>
                     <% end %>
