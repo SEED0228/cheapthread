@@ -9,10 +9,10 @@ module Api
           if (num = params[:num].to_i).positive? && @list.ready_to_turn_default_gacha?
             render json: @list.turn_default_gacha(num)
           else
-            render json: { errors: { title: '入力が不正です' } }, status: 400
+            render json: { errors: { title: '入力が不正です' } }, status: :bad_request
           end
         else
-          render json: { errors: { title: 'リストが非公開、もしくは要素を持たないもの、もしくは存在していません。' } }, status: 400
+          render json: { errors: { title: 'リストが非公開、もしくは要素を持たないもの、もしくは存在していません。' } }, status: :bad_request
         end
       end
 
@@ -21,10 +21,10 @@ module Api
           if (price = params[:price].to_i).positive? && @list.ready_to_turn_price_gacha?
             render json: @list.turn_price_gacha(price)
           else
-            render json: { errors: { title: '入力が不正、もしくはガチャができないリストです' } }, status: 400
+            render json: { errors: { title: '入力が不正、もしくはガチャができないリストです' } }, status: :bad_request
           end
         else
-          render json: { errors: { title: 'リストが非公開、もしくは要素を持たないもの、もしくは存在していません。' } }, status: 400
+          render json: { errors: { title: 'リストが非公開、もしくは要素を持たないもの、もしくは存在していません。' } }, status: :bad_request
         end
       end
 
@@ -33,10 +33,10 @@ module Api
           if (calorie = params[:calorie].to_i).positive? && @list.ready_to_turn_calorie_gacha?
             render json: @list.turn_calorie_gacha(calorie)
           else
-            render json: { errors: { title: '入力が不正、もしくはガチャができないリストです' } }, status: 400
+            render json: { errors: { title: '入力が不正、もしくはガチャができないリストです' } }, status: :bad_request
           end
         else
-          render json: { errors: { title: 'リストが非公開、もしくは要素を持たないもの、もしくは存在していません。' } }, status: 400
+          render json: { errors: { title: 'リストが非公開、もしくは要素を持たないもの、もしくは存在していません。' } }, status: :bad_request
         end
       end
 
