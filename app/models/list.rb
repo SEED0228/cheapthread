@@ -56,7 +56,7 @@ class List < ApplicationRecord
   end
 
   def ready_to_turn_calorie_gacha?
-    return false if list_elements.empty? || contains_calorie
+    return false if list_elements.empty? || !contains_calorie
 
     list_elements.each do |list_element|
       return false if list_element.calorie.nil? || list_element.calorie.zero?
