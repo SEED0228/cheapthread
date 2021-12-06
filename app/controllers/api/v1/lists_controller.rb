@@ -4,7 +4,7 @@ module Api
   module V1
     class ListsController < ApplicationController
       def index
-        @lists = List.is_public.map(&:attributes).map do |list|
+        @lists = List.search(params['q'])&.map(&:attributes)&.map do |list|
           model = List.find(list['id'])
           list.merge('ready_to_turn_default_gacha' => model.ready_to_turn_default_gacha?,
                      'ready_to_turn_price_gacha' => model.ready_to_turn_price_gacha?,

@@ -63,4 +63,12 @@ class List < ApplicationRecord
     end
     true
   end
+
+  def self.search(query)
+    if query
+      is_public.where('title LIKE ?', "%#{query}%")
+    else
+      is_public
+    end
+  end
 end
