@@ -8,7 +8,7 @@ module Api
         if @list.present?
           render json: @list.list_elements
         else
-          render json: { errors: { title: 'リストが非公開、もしくは存在していません。' } }
+          render json: { errors: { title: 'リストが非公開、もしくは存在していません。' } }, status: :bad_request
         end
       end
 
