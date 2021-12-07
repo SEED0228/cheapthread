@@ -15,7 +15,7 @@ module Public
         redirect_to root_path, notice: 'このリストは非公開です'
         return
       end
-      redirect_to root_path, notice: 'このリストは〇円ガチャできません' if @list.ready_to_turn_price_gacha?
+      redirect_to root_path, notice: 'このリストは〇円ガチャできません' unless @list.ready_to_turn_price_gacha?
     end
 
     def calorie
@@ -25,7 +25,7 @@ module Public
         redirect_to root_path, notice: 'このリストは非公開です'
         return
       end
-      redirect_to root_path, notice: 'このリストは〇kcalガチャできません' if @list.ready_to_turn_calorie_gacha?
+      redirect_to root_path, notice: 'このリストは〇kcalガチャできません' unless @list.ready_to_turn_calorie_gacha?
     end
 
     def default_create
