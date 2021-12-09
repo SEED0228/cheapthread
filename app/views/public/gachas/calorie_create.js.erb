@@ -1,4 +1,1 @@
-$('.gacha__table').html("<%= j(render partial: 'public/lists/element_table', locals: {list_elements: @list_elements, list: @list} )%>")
-$('.gacha__num').html("<%= j(render partial: 'public/gachas/calorie', locals: {total_calorie: @total_calorie, list_elements: @list_elements, list: @list, twitter_link: @tweet_link} )%>")
-$('#calorie_title').text("<%= @list.title+@max_calorie.to_s%>kcalガチャ")
-$('.gacha_field').val('')
+$('.result').html("<%= j(render partial: 'public/gachas/result', locals: {list_elements: @list_elements, tweet_link: @tweet_link, summary: @summary} )%>")
