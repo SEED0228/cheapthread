@@ -27,7 +27,7 @@ class ListElement < ApplicationRecord
   end
 
   def info
-    txt = list.contains_price ? "#{price}\u5186" : ''
+    txt = list.contains_price ? "#{price}\u5186 " : ''
     list.contains_calorie ? "#{txt}#{calorie}kcal" : txt
   end
 
