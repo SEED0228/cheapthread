@@ -3,22 +3,22 @@
 <% end %>
 
 
-<div class="gacha_box">
-    <div class=page>
+<div class="gacha_box" style=<%="background:#{@list.color};"%>>
+    <div class=page style=<%="border-color:#{@list.color};"%>>
         <%= form_with url:list_gacha_price_create_path(@list), method: :post do |f|%>
-            <div class = "heading">
-                <h1><%= @list.title %></h1>
-                <h1><%= f.text_field :price, class: 'gacha_input_box', placeholder: '1000' %>円ガチャ</h1>
+            <div class = "heading" style=<%="border-bottom-color:#{@list.color};"%>>
+                <h1 style=<%="color:#{@list.text_color};"%>><%= @list.title %></h1>
+                <h1 style=<%="color:#{@list.text_color};"%>><%= f.text_field :price, class: 'gacha_input_box', placeholder: '1000' %>円ガチャ</h1>
             </div>
             <div class = "buttonarea">
-                <%= f.submit "ガチャを回す", class: 'gacha_btn'%>
+                <%= f.submit "ガチャを回す", class: 'gacha_btn', style:"background:#{@list.color}CC;border-bottom-color:#{@list.color};" %>
             </div>
             <div class="result">
             </div>
         <% end %>
     </div>
 
-    <div class=page>
+    <div class=page style=<%="border-color:#{@list.color};"%>>
         <div class="container">
             <div class="row">
                 <%= link_to "ガチャ詳細", list_path(@list), class: "btn btn-outline-primary col-xs-12 col-md-6"%>

@@ -77,7 +77,7 @@ module Public
       tweet_link
     end
 
-    def generate_calorie_twitter_link(title, elements, list, total_calorie)
+    def generate_calorie_twitter_link(title, elements, list, _total_calorie)
       tweet_link = "https://twitter.com/intent/tweet?text=#{title}%0A"
       elements.each do |element|
         tweet_link += "%0A#{element.name}"
@@ -88,7 +88,7 @@ module Public
       tweet_link
     end
 
-    def generate_price_twitter_link(title, elements, list, total_price)
+    def generate_price_twitter_link(title, elements, list, _total_price)
       tweet_link = "https://twitter.com/intent/tweet?text=#{title}%0A"
       elements.each do |element|
         tweet_link += "%0A#{element.name}"

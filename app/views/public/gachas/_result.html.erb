@@ -1,12 +1,12 @@
 <div class="items">
     <% list_elements.each do |element| %>
-    <div class="box menu">
-        <h2><%= element.name %></h2>
+    <div class="box menu" style=<%="border-left-color:#{@list.color};background:#{@list.color}1A;"%>>
+        <h2 style=<%="color:#{@list.text_color};"%>><%= element.name %></h2>
         <p><%= element.info %></p>
     </div>
     <% end %>
-    <div class="box rst">
-        <h2><%= summary %></h2>
+    <div class="box rst" style=<%="border-left-color:#{@list.color};background:#{@list.color}4D;"%>>
+        <h2 style=<%="color:#{@list.text_color};"%>><%= summary %></h2>
     </div>
     <div class="footer">
         <%=link_to tweet_link do %>

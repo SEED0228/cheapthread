@@ -31,6 +31,16 @@
         <%= f.label "公開" %>
     </td>
     </tr>
+    <tr>
+    <td>
+        <%= f.color_field :color, class: "list_color", value: list.color.present? ? list.color : "#007c00"%>
+        <%= f.label "背景色" %>
+    </td>
+    <td>
+        <%= f.color_field :text_color, class: "list_text_color", value: list.text_color.present? ? list.text_color : "#d70002"%>
+        <%= f.label "フォントの色" %>
+    </td>
+    </tr>
     </table>
     </div>
 
