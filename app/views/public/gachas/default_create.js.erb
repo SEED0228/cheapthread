@@ -1,4 +1,1 @@
-$('.gacha__table').html("<%= j(render partial: 'public/lists/element_table', locals: {list_elements: @list_elements, list: @list} )%>")
-$('.gacha__num').html("<%= j(render partial: 'public/gachas/num', locals: { list_elements: @list_elements, list: @list, num: @num, twitter_link: @tweet_link} )%>")
-$('#num_title').text("<%= @list.title+@num.to_s%>連ガチャ")
-$('.gacha_field').val('')
+$('.result').html("<%= j(render partial: 'public/gachas/result', locals: {list_elements: @list_elements, tweet_link: @tweet_link, summary: @summary} )%>")

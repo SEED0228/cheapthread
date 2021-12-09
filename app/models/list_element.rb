@@ -26,6 +26,11 @@ class ListElement < ApplicationRecord
     end
   end
 
+  def info
+    txt = list.contains_price ? "#{price}\u5186" : ''
+    list.contains_calorie ? "#{txt}#{calorie}kcal" : txt
+  end
+
   def self.updatable_attributes
     %w[name price calorie introduction]
   end

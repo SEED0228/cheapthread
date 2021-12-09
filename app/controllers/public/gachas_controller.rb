@@ -34,7 +34,8 @@ module Public
       redirect_to list_gacha_default_path, notice: '入力が不正です' if @num <= 0
       # ガチャ処理+ツイートリンク生成
       @list_elements = @list.turn_default_gacha(@num)
-      @tweet_link = generate_default_twitter_link("#{@list.title}#{@num}連ガチャ", @list_elements, @list)
+      @tweet_link = generate_default_twitter_link("#{@list.title}#{@num}連ガチャを回したよ！", @list_elements, @list)
+      @summary = create_summary(@list_elements, @list)
     end
 
     def price_create
@@ -43,7 +44,9 @@ module Public
       redirect_to list_gacha_default_path, notice: '入力が不正です' if @max_price <= 0
       # ガチャ処理+ツイートリンク生成
       @total_price, @list_elements = @list.turn_price_gacha(@max_price)
-      @tweet_link = generate_price_twitter_link("#{@list.title}#{@max_price}円ガチャ", @list_elements, @list, @total_price)
+      @tweet_link = generate_price_twitter_link("#{@list.title}#{@max_price}円ガチャを回したよ！", @list_elements, @list,
+                                                @total_price)
+      @summary = create_summary(@list_elements, @list)
     end
 
     def calorie_create
@@ -52,8 +55,9 @@ module Public
       redirect_to list_gacha_default_path, notice: '入力が不正です' if @max_calorie <= 0
       # ガチャ処理+ツイートリンク生成
       @total_calorie, @list_elements = @list.turn_calorie_gacha(@max_calorie)
-      @tweet_link = generate_calorie_twitter_link("#{@list.title}#{@max_calorie}kcalガチャ", @list_elements, @list,
+      @tweet_link = generate_calorie_twitter_link("#{@list.title}#{@max_calorie}kcalガチャを回したよ！", @list_elements, @list,
                                                   @total_calorie)
+      @summary = create_summary(@list_elements, @list)
     end
 
     private
@@ -63,35 +67,45 @@ module Public
     end
 
     def generate_default_twitter_link(title, elements, list)
-      tweet_link = "https://twitter.com/intent/tweet?text=#{title}"
+      tweet_link = "https://twitter.com/intent/tweet?text=#{title}%0A"
       elements.each do |element|
         tweet_link += "%0A#{element.name}"
       end
-      tweet_link += "%0Alink:https://cheapthread.herokuapp.com/lists/#{list.id}"
+      tweet_link += "%0A%0A#{create_summary(elements, list)}"
+      tweet_link += "%0A%0A%23なんでもガチャ https://cheapthread.herokuapp.com/lists/#{list.id}/gacha/default"
       URI.encode_www_form_component tweet_link
       tweet_link
     end
 
-    def generate_calorie_twitter_link(title, elements, list, total_calorie)
-      tweet_link = "https://twitter.com/intent/tweet?text=#{title}"
+    def generate_calorie_twitter_link(title, elements, list, _total_calorie)
+      tweet_link = "https://twitter.com/intent/tweet?text=#{title}%0A"
       elements.each do |element|
-        tweet_link += "%0A#{element.name}(#{element.calorie}kcal)"
+        tweet_link += "%0A#{element.name}"
       end
-      tweet_link += "%0A計#{total_calorie}kcal"
-      tweet_link += "%0Alink:https://cheapthread.herokuapp.com/lists/#{list.id}"
+      tweet_link += "%0A%0A#{create_summary(elements, list)}"
+      tweet_link += "%0A%0A%23なんでもガチャ https://cheapthread.herokuapp.com/lists/#{list.id}/gacha/calorie"
       URI.encode_www_form_component tweet_link
       tweet_link
     end
 
-    def generate_price_twitter_link(title, elements, list, total_price)
-      tweet_link = "https://twitter.com/intent/tweet?text=#{title}"
+    def generate_price_twitter_link(title, elements, list, _total_price)
+      tweet_link = "https://twitter.com/intent/tweet?text=#{title}%0A"
       elements.each do |element|
-        tweet_link += "%0A#{element.name}(￥#{element.price})"
+        tweet_link += "%0A#{element.name}"
       end
-      tweet_link += "%0A計￥#{total_price}"
-      tweet_link += "%0Alink:https://cheapthread.herokuapp.com/lists/#{list.id}"
+      tweet_link += "%0A%0A#{create_summary(elements, list)}"
+      tweet_link += "%0A%0A%23なんでもガチャ https://cheapthread.herokuapp.com/lists/#{list.id}/gacha/price"
       URI.encode_www_form_component tweet_link
       tweet_link
+    end
+
+    def create_summary(elements, list)
+      Rails.logger.debug elements
+      Rails.logger.debug ListElement.all
+      txt = '計'
+      txt += "#{elements.sum(&:price)}円 " if list.contains_price
+      txt += "#{elements.sum(&:calorie)}kcal " if list.contains_calorie
+      "#{txt}#{elements.count}\u56DE"
     end
   end
 end

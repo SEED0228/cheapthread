@@ -58,7 +58,8 @@ module Public
     private
 
     def list_params
-      params.require(:list).permit(:title, :introduction, :contains_calorie, :contains_price, :is_public)
+      params.require(:list).permit(:title, :introduction, :contains_calorie, :contains_price, :is_public, :color,
+                                   :text_color)
     end
 
     def sort_search_list(sort_num, lists)
