@@ -1,0 +1,13 @@
+<div class="formbox">
+    <div class="stronger formheader">レスを投稿する</div>
+    <div class="formbody">
+        <%= form_with model: [cheap_thread, thread_comment] do |f| %>
+            <p>
+                <%= f.text_field :name, class: 'formelem maxwidth', placeholder: "名前(省略可)", size: 70 %>
+                <%= f.text_field :email, class: 'formelem maxwidth', placeholder: "メールアドレス(省略可)", size: 70 %>
+                <%= f.text_area :comment, class: 'formelem maxwidth', placeholder: "コメント内容", size: '70x5' %>
+                <%= f.submit '書き込む', class: 'cm_btn' %>
+            </p>
+        <% end %>
+    </div>
+</div>

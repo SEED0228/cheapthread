@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 list_form">
+            <div class="container_body background_logo">
+                <h1 class="pt-4 pl-4"><%= @cheap_thread.title %></h1>
+                <%= render 'menu', cheap_thread: @cheap_thread %>
+
+                <div class="thread pt-4 pb-4">
+                    <%= render 'public/thread_comments/table', thread_comments: @thread_comments, ankers: [] %>
+                </div>
+                <%= render 'menu', cheap_thread: @cheap_thread %>
+                <div class="newposts">
+                    <span class="newpostbutton">
+                        <%= link_to '新着レスの表示', cheap_thread_path(@cheap_thread) + '#' + @cheap_thread.comment_number.to_s, class: "newpb" %>
+                    </span>
+                </div>
+                <%= render 'public/thread_comments/form', cheap_thread: @cheap_thread, thread_comment: @thread_comment %>
+            </div>
+        </div>
+    </div>
+</div>

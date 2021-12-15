@@ -7,6 +7,7 @@ class List < ApplicationRecord
   validates :title, presence: true
   scope :is_public, -> { where(is_public: true) }
   scope :contains_elements, -> { joins(:list_elements).where('list_elements.id IS NOT NULL') }
+  has_many :cheap_threads, dependent: :destroy
 
   def turn_default_gacha(num)
     elements = []

@@ -24,6 +24,13 @@
       <% else %>
         <font size="3" color="#0000ff" class="black-tag mr-3 mr-lg-5">○kcal</font>
       <% end %>
+      <% if list.ready_to_turn_default_gacha? %>
+        <%= link_to new_list_cheap_thread_path(list) do%>
+          <font size="3" color="#0000ff" class="blue-tag mr-3 mr-lg-5">安価</font>
+        <% end %>
+      <% else %>
+        <font size="3" color="#0000ff" class="black-tag mr-3 mr-lg-5">安価</font>
+      <% end %>
       <%= link_to list_path(list) do%>
         <font size="3" color="#0000ff" class="blue-tag mr-3 mr-lg-5">詳細</font>
       <% end %>
