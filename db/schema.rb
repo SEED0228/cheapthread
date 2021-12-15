@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_190318) do
+ActiveRecord::Schema.define(version: 2021_12_15_111223) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +25,19 @@ ActiveRecord::Schema.define(version: 2021_12_09_190318) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cheap_threads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "comment_number", default: 0, null: false
+    t.string "title", null: false
+    t.bigint "end_user_id"
+    t.bigint "list_id", null: false
+    t.bigint "nanj_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["end_user_id"], name: "index_cheap_threads_on_end_user_id"
+    t.index ["list_id"], name: "index_cheap_threads_on_list_id"
+    t.index ["nanj_id"], name: "index_cheap_threads_on_nanj_id"
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -64,4 +80,30 @@ ActiveRecord::Schema.define(version: 2021_12_09_190318) do
     t.index ["title"], name: "index_lists_on_title", unique: true
   end
 
+  create_table "nanjs", force: :cascade do |t|
+    t.string "ip_address", null: false
+    t.string "random_number", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "thread_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "comment", null: false
+    t.string "user_id", null: false
+    t.bigint "end_user_id"
+    t.uuid "cheap_thread_id", null: false
+    t.bigint "nanj_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cheap_thread_id"], name: "index_thread_comments_on_cheap_thread_id"
+    t.index ["end_user_id"], name: "index_thread_comments_on_end_user_id"
+    t.index ["nanj_id"], name: "index_thread_comments_on_nanj_id"
+  end
+
+  add_foreign_key "cheap_threads", "end_users"
+  add_foreign_key "cheap_threads", "lists"
+  add_foreign_key "cheap_threads", "nanjs"
+  add_foreign_key "thread_comments", "cheap_threads"
+  add_foreign_key "thread_comments", "end_users"
+  add_foreign_key "thread_comments", "nanjs"
 end
