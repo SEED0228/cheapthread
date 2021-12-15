@@ -41,7 +41,7 @@ module Public
     def price_create
       @max_price = params[:price].to_i
       @list = List.find(params[:list_id])
-      redirect_to list_gacha_default_path, notice: '入力が不正です' if @max_price <= 0
+      redirect_to list_gacha_price_path, notice: '入力が不正です' if @max_price <= 0
       # ガチャ処理+ツイートリンク生成
       @total_price, @list_elements = @list.turn_price_gacha(@max_price)
       @tweet_link = generate_price_twitter_link("#{@list.title}#{@max_price}円ガチャを回したよ！", @list_elements, @list,
@@ -52,7 +52,7 @@ module Public
     def calorie_create
       @max_calorie = params[:calorie].to_i
       @list = List.find(params[:list_id])
-      redirect_to list_gacha_default_path, notice: '入力が不正です' if @max_calorie <= 0
+      redirect_to list_gacha_calorie_path, notice: '入力が不正です' if @max_calorie <= 0
       # ガチャ処理+ツイートリンク生成
       @total_calorie, @list_elements = @list.turn_calorie_gacha(@max_calorie)
       @tweet_link = generate_calorie_twitter_link("#{@list.title}#{@max_calorie}kcalガチャを回したよ！", @list_elements, @list,
