@@ -1,0 +1,22 @@
+<h1>安価スレ作成</h1>
+<%= form_with model: [list, cheap_thread], local: true do |f| %>
+
+    <div class="error row">
+        <%= render 'public/end_users/shared/error_messages', resource: cheap_thread %>
+    </div>
+
+    <div class="field row mt-4">
+        <%= f.label "タイトル" %>
+        <%= f.text_field :title, class: 'col-xs-12 list_title', value: list.title + '来たので安価' %>
+    </div>
+
+    <div class="field row mt-4">
+        <%= f.label "名前(default)" %>
+        <%= f.text_field :initial_name, class: 'col-xs-12 list_title', value: '風吹けば名無し' %>
+    </div>
+
+    <div class="actions row mt-4">
+        <%= f.submit '作成', class: 'btn btn-primary col-xs-12'%>
+    </div>
+<% end %>
+

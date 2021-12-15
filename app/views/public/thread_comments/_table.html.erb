@@ -1,0 +1,18 @@
+<% thread_comments.each do |comment| %>
+<div class="post<%=' highlightpost' if ankers.include?(comment.number)%>" id=<%=comment.number.to_s%> data-date="NG" data-userid=<%= comment.user_id %> data-id=<%=comment.number.to_s%>>
+    <div class="meta">
+        <span class="number"><%=comment.number%></span>
+        <span class="name">
+            <b>
+                <a href="mailto:<%=comment.email%>"><%=comment.name%></a>
+            </b>
+        </span>
+        <span class="date"><%= comment.created_at.to_s(:datetime_jp) %></span>
+        <span class="uid">ID:<%= comment.user_id %></span>
+    </div>
+    <div class="message">
+        <span class="escaped"> <%= text_anker_to_link(comment.comment).html_safe %> </span>
+    </div>
+</div>
+<% end %>
+<%=@a%>

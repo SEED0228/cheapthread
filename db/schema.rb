@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_111223) do
+ActiveRecord::Schema.define(version: 2021_12_15_164931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_111223) do
     t.bigint "nanj_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "initial_name", default: "風吹けば名無し"
     t.index ["end_user_id"], name: "index_cheap_threads_on_end_user_id"
     t.index ["list_id"], name: "index_cheap_threads_on_list_id"
     t.index ["nanj_id"], name: "index_cheap_threads_on_nanj_id"
@@ -95,6 +96,9 @@ ActiveRecord::Schema.define(version: 2021_12_15_111223) do
     t.bigint "nanj_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "email"
+    t.integer "number"
     t.index ["cheap_thread_id"], name: "index_thread_comments_on_cheap_thread_id"
     t.index ["end_user_id"], name: "index_thread_comments_on_end_user_id"
     t.index ["nanj_id"], name: "index_thread_comments_on_nanj_id"

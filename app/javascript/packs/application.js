@@ -26,3 +26,5 @@ import '../stylesheets/application';
 require("@nathanvda/cocoon")
 
 require('test.js')
+
+window.$ = jQuery;

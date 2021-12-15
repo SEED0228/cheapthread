@@ -32,6 +32,7 @@
                         <% if @list.ready_to_turn_calorie_gacha? %>
                             <%= link_to "〇kcalガチャ", list_gacha_calorie_path(@list), class: "col-md-6 col-xs-12 fas fa-dharmachakra btn btn-outline-warning",style: "font-size: 20px;" %>
                         <% end %>
+                        <%= link_to "安価スレ", new_list_cheap_thread_path(@list), class: "col-md-6 col-xs-12 fas fa-clipboard-list btn btn-outline-danger",style: "font-size: 20px;" %>
                     <% end %>
                     </div>
                 </div>

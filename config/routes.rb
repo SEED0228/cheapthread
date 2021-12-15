@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'thread_comments/show'
+  end
   scope module: :public do
     devise_for :end_users, controllers: {
       sessions: 'public/end_users/sessions',
@@ -10,12 +13,16 @@ Rails.application.routes.draw do
       resources :list_elements, only: [:new, :create, :update, :destroy] do
         collection { post :import }
       end
+      resources :cheap_threads, only: %i(create new), path: :threads
       get 'gacha/default', to: 'gachas#default', as: :gacha_default
       get 'gacha/price', to: 'gachas#price', as: :gacha_price
       get 'gacha/calorie', to: 'gachas#calorie', as: :gacha_calorie
       post 'gacha/default', to: 'gachas#default_create', as: :gacha_default_create
       post 'gacha/price', to: 'gachas#price_create', as: :gacha_price_create
       post 'gacha/calorie', to: 'gachas#calorie_create', as: :gacha_calorie_create
+    end
+    resources :cheap_threads, only: %i(index show), path: :threads do
+      resources :thread_comments, only: %i(show create), path: :comments
     end
     post 'home/sort', to: 'home#sort', as: :home_sort
     post 'lists/search', to: 'lists#search', as: :search_list
