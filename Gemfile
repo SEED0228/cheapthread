@@ -85,4 +85,3 @@ gem 'roo'
 # 2021/12/16
 gem 'dotenv-rails'
 gem 'unicorn'
-gem 'mini_racer', platforms: :ruby
