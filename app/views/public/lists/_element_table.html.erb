@@ -23,7 +23,7 @@
     <% if list.contains_calorie %>
     <td><%= list_element.calorie %></td>
     <% end %>
-    <td><%= list_element.introduction.truncate(20)%>
+    <td><%= list_element.introduction&.truncate(20)%>
     
 </tr>
 <% end %>
