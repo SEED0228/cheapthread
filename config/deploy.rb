@@ -5,6 +5,7 @@ set :application, "cheapthread"
 set :repo_url, "git@github.com:SEED0228/cheapthread.git"
 set :deploy_to, '/var/www/cheapthread'
 # set :linked_files, %w{config/master.key}
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/uploads}
 set :keep_releases, 3
 set :rbenv_ruby, '2.6.3'
