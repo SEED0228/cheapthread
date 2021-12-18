@@ -72,7 +72,7 @@ module Public
         tweet_link += "%0A#{element.name}"
       end
       tweet_link += "%0A%0A#{create_summary(elements, list)}"
-      tweet_link += "%0A%0A%23なんでもガチャ https://cheapthread.herokuapp.com/lists/#{list.id}/gacha/default"
+      tweet_link += "%0A%0A%23なんでもガチャ https://www.cheapthread.jp/lists/#{list.id}/gacha/default"
       URI.encode_www_form_component tweet_link
       tweet_link
     end
@@ -83,7 +83,7 @@ module Public
         tweet_link += "%0A#{element.name}"
       end
       tweet_link += "%0A%0A#{create_summary(elements, list)}"
-      tweet_link += "%0A%0A%23なんでもガチャ https://cheapthread.herokuapp.com/lists/#{list.id}/gacha/calorie"
+      tweet_link += "%0A%0A%23なんでもガチャ https://www.cheapthread.jp/lists/#{list.id}/gacha/calorie"
       URI.encode_www_form_component tweet_link
       tweet_link
     end
@@ -94,7 +94,7 @@ module Public
         tweet_link += "%0A#{element.name}"
       end
       tweet_link += "%0A%0A#{create_summary(elements, list)}"
-      tweet_link += "%0A%0A%23なんでもガチャ https://cheapthread.herokuapp.com/lists/#{list.id}/gacha/price"
+      tweet_link += "%0A%0A%23なんでもガチャ https://www.cheapthread.jp/lists/#{list.id}/gacha/price"
       URI.encode_www_form_component tweet_link
       tweet_link
     end

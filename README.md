@@ -14,7 +14,8 @@
 
 ## リンク
 
-[ガチャアプリ](https://cheapthread.herokuapp.com/)
+[ガチャアプリ](https://www.cheapthread.jp/)
+[heroku版(旧)](https://cheapthread.herokuapp.com/)
 
 ## 環境構築方法
 

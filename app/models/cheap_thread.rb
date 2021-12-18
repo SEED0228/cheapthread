@@ -25,7 +25,7 @@ class CheapThread < ApplicationRecord
   def generate_twitter_link
     tweet_link = "https://twitter.com/intent/tweet?text=#{title}%0A%0A"
     tweet_link += '%23ご注文は安価ですか？%0A'
-    tweet_link += "https://cheapthread.herokuapp.com/threads/#{id}"
+    tweet_link += "https://www.cheapthread.jp/threads/#{id}"
     URI.encode_www_form_component tweet_link
     tweet_link
   end
