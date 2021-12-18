@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title><%= content_for?(:title) ? yield(:title) : "何でもガチャ"%></title>
     <meta name="twitter:card" content="summary" />
-    <meta property="og:url" content=<%="https://cheapthread.jp/" + request.fullpath %> /> 
+    <meta property="og:url" content=<%= content_for?(:sns_url) ? yield(:sns_url) : "https://cheapthread.jp/" + request.fullpath %> /> 
     <meta property="og:title" content=<%= content_for?(:sns_title) ? yield(:sns_title) : "何でもガチャ" %> /> 
     <meta property="og:description" content=<%= content_for?(:sns_description) ? yield(:sns_description) : "○円ガチャや○kcalガチャを気軽に作ったり回したりできるサイトです。また、任意のリストをもとに安価スレを作成し自動でスレを投げてくれる勝手に安価スレ機能も有ります" %> /> 
     <meta property="og:image" content=<%= content_for?(:sns_image) ? yield(:sns_image) : "https://cheapthread.jp/" + image_url("logo_gacha.jpeg") %> /> 

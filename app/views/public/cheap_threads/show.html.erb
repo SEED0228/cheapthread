@@ -7,6 +7,9 @@
 <% content_for :sns_description do %>
     アンカーをすると作成、公開されたリスト要素を勝手に投げてくれるスレを作ることができるサイトです
 <% end %>
+<% content_for :sns_url do %>
+    <%= "https://cheapthread.jp/" + request.fullpath %>
+<% end %>
 
 <div class="container">
     <div class="row">
