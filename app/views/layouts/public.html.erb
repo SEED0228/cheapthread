@@ -7,7 +7,7 @@
     <meta property="og:url" content=<%= request.fullpath %> /> 
     <meta property="og:title" content=<%= content_for?(:sns_title) ? yield(:sns_title) : "何でもガチャ" %> /> 
     <meta property="og:description" content=<%= content_for?(:sns_description) ? yield(:sns_description) : "○円ガチャや○kcalガチャを気軽に作ったり回したりできるサイトです。また、任意のリストをもとに安価スレを作成し自動でスレを投げてくれる勝手に安価スレ機能も有ります" %> /> 
-    <meta property="og:image" content=<%= content_for?(:sns_image) ? yield(:sns_image) : "/assets/logo_gacha.jpeg" %> /> 
+    <meta property="og:image" content=<%= content_for?(:sns_image) ? yield(:sns_image) : asset_url("images/logo_gacha.jpeg") %> /> 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
