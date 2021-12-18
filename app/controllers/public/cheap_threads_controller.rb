@@ -8,7 +8,8 @@ module Public
     def index; end
 
     def show
-      @cheap_thread = CheapThread.find(params[:id])
+      @cheap_thread = CheapThread.find_by(id: params[:id])
+      redirect_to root_path, notice: 'このスレは存在しません' unless @cheapthread.present?
       @thread_comments = @cheap_thread.thread_comments
       @thread_comment = ThreadComment.new
     end
