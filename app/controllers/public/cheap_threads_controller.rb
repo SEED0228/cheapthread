@@ -9,7 +9,7 @@ module Public
 
     def show
       @cheap_thread = CheapThread.find_by(id: params[:id])
-      redirect_to root_path, notice: 'このスレは存在しません' unless @cheapthread.present?
+      redirect_to root_path, notice: 'このスレは存在しません' unless @cheap_thread.present?
       @thread_comments = @cheap_thread.thread_comments
       @thread_comment = ThreadComment.new
     end
